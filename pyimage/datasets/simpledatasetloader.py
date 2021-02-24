@@ -1,4 +1,5 @@
 import cv2,os
+import numpy as np
 
 
 
@@ -27,7 +28,7 @@ class SimpleDatasetLoader:
             
             if self.preprocessors is not None:
                 for preprocessor in self.preprocessors:
-                    image = p.preprocess(image)
+                    image = preprocessor.preprocess(image)
         
         
             data.append(image)
@@ -35,7 +36,7 @@ class SimpleDatasetLoader:
 
 
             if verbose > 0 and i > 0 and (i + 1) % verbose == 0:
-                print(f"[INFO] processed {i + 1}/{len(imagePaths)})
+                print(f"[INFO] processed {i + 1}/{len(imagePaths)}")
                       
             
                       
